@@ -6,7 +6,7 @@
     "web": "expo start --web",
     "tsc": "tsc",
     "eject": "expo eject",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install client/.husky"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.1.0",
