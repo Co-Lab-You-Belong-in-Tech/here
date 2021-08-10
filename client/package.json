@@ -5,7 +5,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "tsc": "tsc",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.1.0",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@types/parse-json": "^4.0.0",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
@@ -45,8 +47,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.2.1",
     "typescript": "~4.0.0"
   },
-  "private": true
+  "private": true,
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix"
+  }
 }
