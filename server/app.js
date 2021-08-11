@@ -4,6 +4,6 @@ const express = require("express");
 const app = express();
 app.listen(5050);
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.send('<p>Home Page</p>')
 });
