@@ -64,8 +64,12 @@ const theme = createTheme({
       fontSize: 14,
       // color: "primaryGreen",
     },
+  },
+  buttonVariants: {
     outlineButton: {
-      border: "2px solid #6156B0",
+      borderWidth: 2,
+      borderColor: "#6156B0",
+      borderStyle: "solid",
       backgroundColor: "white",
     },
   },

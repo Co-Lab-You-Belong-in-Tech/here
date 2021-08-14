@@ -12,8 +12,8 @@ export interface StackNavigationProps<
 }
 
 export type Routes = {
-  Welcome: undefined;
   Login: undefined;
-  Onboarding: undefined;
-  // Signup: undefined;
+  Signup: undefined;
+  Verify: undefined;
+  Welcome: undefined;
 };

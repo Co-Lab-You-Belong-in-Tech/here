@@ -1,14 +1,14 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Alert, StyleSheet } from "react-native";
 
 import { Box, Button, Container, Text } from "../../../shared-components";
-
 import TextInput from "../../../shared-components/form";
 import {
   Routes,
   StackNavigationProps,
 } from "../../../shared-components/navigation";
+
 interface FormData {
   phone_number?: string;
   password?: string;
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Login({ navigation }: StackNavigationProps<Routes, "Login">) {
+function Signup({ navigation }: StackNavigationProps<Routes, "Login">) {
   const phoneRef = React.useRef<typeof TextInput | null>(null);
   const passwordRef = React.useRef<typeof TextInput | null>(null);
 
@@ -71,52 +71,56 @@ function Login({ navigation }: StackNavigationProps<Routes, "Login">) {
         <Box marginTop="xxl" />
         <Box
           top={-20}
-          justifyContent="flex-start"
-          alignContent="flex-start"
+          justifyContent="center"
+          alignContent="center"
           flexDirection="row"
           // backgroundColor="grey"
           marginTop="xxl"
           marginBottom="m"
         >
-          <Text textAlign="left" variant="hero" style={{ color: "black" }}>
-            Here
+          <Text
+            textAlign="center"
+            variant="hero"
+            style={{ color: "black", fontSize: 36 }}
+          >
+            Sign Up
           </Text>
         </Box>
         <Box
           top={-45}
-          justifyContent="flex-start"
-          alignContent="flex-start"
+          justifyContent="center"
+          alignContent="center"
           flexDirection="row"
         >
-          <Text textAlign="left" variant="loginSubheader" color="shade">
-            A Co-Lab App
+          <Text
+            textAlign="center"
+            variant="loginSubheader"
+            color="shade"
+            style={{ marginTop: 37, fontSize: 18 }}
+          >
+            Enter your phone number
           </Text>
         </Box>
         <Controller
           render={({ field: { onBlur, onChange, value, ref } }) => (
             <Box
-              marginBottom="l"
+              marginBottom="m"
+              top={-20}
+              // padding="s"
+              // position="relative"
               // style={{
               //   borderColor: phoneRef ? "rgba(7, 90, 81, 0.34)" : "transparent",
               //   borderWidth: value ? 2 : 0,
               //   borderRadius: 4,
               // }}
             >
-              <Text
-                variant="loginSubheader"
-                color="grey"
-                marginBottom="s"
-                marginTop="xxl"
-              >
-                Your Phone Number
-              </Text>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="phone-pad"
                 onBlur={onBlur}
                 onChangeText={value => onChange(value)}
-                // onSubmitEditing={() => passwordRef.current?.focus()}
+                // onSubmitEditing={() => phoneRef.current?.focus()}
                 returnKeyType="next"
                 textAlignVertical="center"
                 placeholder="(555) 555-5555"
@@ -136,39 +140,37 @@ function Login({ navigation }: StackNavigationProps<Routes, "Login">) {
           name="phone_number"
           rules={{ required: true }}
         />
-
-        <Box alignItems="center" marginTop="l">
+        <Box
+          flexDirection="row"
+          justifyContent="center"
+          alignContent="center"
+          position="relative"
+          top={-35}
+          marginTop="m"
+          marginBottom="m"
+          padding="xs"
+        >
+          <Text
+            variant="loginSubheader"
+            color="shade"
+            marginBottom="l"
+            textAlign="center"
+            // marginTop="xxl"
+            style={{ fontSize: 16, fontWeight: "400" }}
+          >
+            Message and data rates may apply
+          </Text>
+        </Box>
+        <Box alignItems="center" marginTop="s" top={-35} position="relative">
           <Button
             variant="primary"
-            onPress={() => navigation.navigate("Signup")}
-            label="Sign Up"
+            onPress={() => navigation.navigate("Verify")}
+            label="Next"
           />
-        </Box>
-
-        <Box alignItems="center" marginTop="s" padding="xl">
-          <Box flexDirection="column" justifyContent="center">
-            <Box>
-              <Text
-                variant="loginSubheader"
-                color="grey"
-                textAlign="center"
-                marginTop="m"
-              >
-                Already Have an account?
-              </Text>
-            </Box>
-            <Box alignItems="center" marginTop="m">
-              <Button
-                onPress={() => alert("Login")}
-                variant="transparent"
-                label="Login"
-              />
-            </Box>
-          </Box>
         </Box>
       </Box>
     </Container>
   );
 }
 
-export default Login;
+export default Signup;

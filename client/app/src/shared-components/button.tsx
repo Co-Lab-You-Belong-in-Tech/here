@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  outlineButton: {
+    borderWidth: 2,
+    borderColor: "#6156B0",
+    borderStyle: "solid",
+    backgroundColor: "white",
+  },
 });
 
 interface ButtonProps {
@@ -22,7 +28,7 @@ interface ButtonProps {
   style?: StyleProp<CSSProperties>;
 }
 
-function Button({ variant, label, onPress, children }: ButtonProps) {
+function Button({ variant, label, onPress, children, style }: ButtonProps) {
   const theme = useTheme<Theme>();
   const backgroundColor =
     variant === "primary"
@@ -32,10 +38,10 @@ function Button({ variant, label, onPress, children }: ButtonProps) {
       : theme.colors.transparent;
 
   const color =
-    variant === "primary" ? theme.colors.white : theme.colors.button;
+    variant === "primary" ? theme.colors.white : theme.colors.primary;
   return (
     <RectButton
-      style={[styles.container, { backgroundColor }]}
+      style={[styles.container, styles.outlineButton, { backgroundColor }]}
       {...{ onPress }}
     >
       {children ? (
