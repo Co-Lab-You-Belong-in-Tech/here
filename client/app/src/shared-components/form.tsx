@@ -31,7 +31,7 @@ const TextInput = React.forwardRef(
         alignItems="center"
         borderRadius="s"
         backgroundColor="offgrey"
-        padding="m"
+        padding="s"
         // borderWidth={1}
       >
         <Box flex={1}>

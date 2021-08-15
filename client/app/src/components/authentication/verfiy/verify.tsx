@@ -35,7 +35,7 @@ const CELL_COUNT = 4;
 
 const animationsColor = [...new Array(CELL_COUNT)].map(() => new Value(0));
 const animationsScale = [...new Array(CELL_COUNT)].map(() => new Value(1));
-const animateCell = ({ hasValue, index, isFocused }) => {
+const animateCell = ({ hasValue, index, isFocused }: any) => {
   Animated.parallel([
     Animated.timing(animationsColor[index], {
       useNativeDriver: false,
@@ -58,7 +58,7 @@ function Verify({ navigation }: StackNavigationProps<Routes, "Login">) {
     setValue,
   });
 
-  const renderCell = ({ index, symbol, isFocused }) => {
+  const renderCell = ({ index, symbol, isFocused }: any) => {
     const hasValue = Boolean(symbol);
     const animatedCellStyle = {
       backgroundColor: hasValue
@@ -257,7 +257,7 @@ function Verify({ navigation }: StackNavigationProps<Routes, "Login">) {
         <Box alignItems="center" position="relative" style={{ marginTop: 60 }}>
           <Button
             variant="primary"
-            onPress={() => navigation.navigate("Welcome")}
+            onPress={() => navigation.navigate("Explore")}
             label="Done!"
           />
         </Box>

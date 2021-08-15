@@ -15,5 +15,9 @@ export type Routes = {
   Login: undefined;
   Signup: undefined;
   Verify: undefined;
-  Welcome: undefined;
+  Explore: undefined;
+};
+
+export type BottomTabParamList = {
+  Explore: undefined;
 };
