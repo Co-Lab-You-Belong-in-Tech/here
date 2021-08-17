@@ -15,9 +15,6 @@ const usersSchema = new Schema({
   uploadId: String
 });
 
-const users = mongoose.model("users", usersSchema);
+const Users = mongoose.model("Users", usersSchema);
 
-module.exports = {
-  model: users,
-  schema: usersSchema
-};
+module.exports = Users;

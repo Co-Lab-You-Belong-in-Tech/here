@@ -5,13 +5,11 @@ const Schema = mongoose.Schema;
 const contactsSchema = new Schema({
   contactName: String,
   contactId: String,
-  contactPhoneNumber: String,
+  contactPhoneNumber: {type: String,
+  required: true},
   isContact: Boolean
 });
 
-const contacts = mongoose.model("contacts", contactsSchema);
+const Contacts = mongoose.model("Contacts", contactsSchema);
 
-module.exports = {
-  model: contacts,
-  schema: contactsSchema
-};
+module.exports = Contacts;

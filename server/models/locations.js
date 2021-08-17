@@ -11,9 +11,6 @@ const locationsSchema = new Schema({
   locationAddress: String
 });
 
-const locations = mongoose.model("locations", locationsSchema);
+const Locations = mongoose.model("Locations", locationsSchema);
 
-module.exports = {
-  model: locations,
-  schema: locationsSchema
-};
+module.exports = Locations;
