@@ -5,12 +5,10 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const app = express();
 const Contact = require("../models/contacts");
-const {config} = require('dotenv')
-
+require('dotenv').config({ path: './server/.env'});
 //CONNECT TO MONGO
 const dbURI = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@here2.rhlys.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`;
-console.log(dbURI);
-config();
+
 mongoose.connect(dbURI, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
