@@ -1,7 +1,10 @@
-const Images = [{ image: require("../assets/images/PizzaImage.jpg") }];
+import { Location as LocationModel } from "../../src/components/location";
 
-export const markers = [
+const Images = [{ image: require("../../assets/images/PizzaImage.jpg") }];
+
+export const location: LocationModel[] = [
   {
+    id: 1,
     title: "Papa Pizza",
     description: "This is the best food place",
     user: "Marlon J.",
@@ -10,6 +13,7 @@ export const markers = [
     reviews: 99,
   },
   {
+    id: 2,
     title: "Pizza Planet",
     description: "This is the second best food place",
     user: "Gary L.",

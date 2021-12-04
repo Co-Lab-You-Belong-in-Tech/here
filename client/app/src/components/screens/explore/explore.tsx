@@ -11,8 +11,9 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { markers } from "../../../../data/cards";
+import { location } from "../../../../data/model/location.model";
 import StarRating from "../../star-rating";
+import Location from "../../location";
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -23,7 +24,7 @@ const CARD_WIDTH = 299;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 export default function Explore() {
-  const initialState = { markers };
+  const initialState = { location };
 
   const [pin, setPin] = useState({
     latitude: 37.78825,
@@ -43,7 +44,7 @@ export default function Explore() {
   let mapAnimation = new Animated.Value(0);
   const _map = React.useRef(null);
 
-  const interpolations = state.markers.map((marker: any, index: number) => {
+  const interpolations = state.location.map((marker: any, index: number) => {
     const inputRange = [
       (index - 1) * CARD_WIDTH,
       index * CARD_WIDTH,
@@ -105,7 +106,6 @@ export default function Explore() {
             shadowRadius: 5,
             elevation: 10,
           },
-
           listView: {
             backgroundColor: "white",
             display: "flex",
@@ -183,45 +183,8 @@ export default function Explore() {
           { useNativeDriver: true },
         )}
       >
-        {state.markers.map((marker, index) => (
-          <View style={styles.card} key={index}>
-            <Image
-              source={marker.image}
-              style={styles.cardImage}
-              resizeMethod="scale"
-              width={56}
-              height={95}
-            />
-            <View style={styles.textContent}>
-              <Text numberOfLines={1} style={styles.cardtitle}>
-                {marker.title}
-              </Text>
-              <Text numberOfLines={1} style={styles.cardDescription}>
-                "{marker.description}"
-              </Text>
-              <View
-                style={{
-                  justifyContent: "space-between",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginTop: 5,
-                }}
-              >
-                <Text style={styles.user}>{marker.user}</Text>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    position: "relative",
-                    paddingLeft: 10,
-                    marginLeft: 40,
-                    // marginTop: 5,
-                  }}
-                >
-                  <StarRating ratings={marker.rating} />
-                </View>
-              </View>
-            </View>
-          </View>
+        {state.location.map((location, index) => (
+          <Location key={location.id} {...{ location }} />
         ))}
       </Animated.ScrollView>
     </View>
@@ -292,12 +255,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignContent: "flex-start",
     position: "absolute",
-    paddingRight: 10,
+    marginTop: 10,
+    marginLeft: 10,
     alignSelf: "baseline",
   },
   textContent: {
     flex: 2,
     padding: 10,
+    marginLeft: 5,
+    marginTop: 2,
   },
   user: {
     fontSize: 12,

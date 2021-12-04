@@ -16,8 +16,10 @@ export type Routes = {
   Signup: undefined;
   Verify: undefined;
   Explore: undefined;
+  LocationInfo: undefined;
 };
 
 export type BottomTabParamList = {
   Explore: undefined;
+  TimeLine: undefined;
 };
